@@ -46,9 +46,4 @@ def get_current_user(
     if user is None:
         raise credentials_exception
 
-    return {
-        "id": user.id,
-        "email": user.email,
-        "first_name": user.first_name,
-        "last_name": user.last_name
-    }
+    return user

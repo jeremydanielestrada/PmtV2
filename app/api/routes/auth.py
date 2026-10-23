@@ -8,7 +8,7 @@ from app.schemas.user import (UserCreate, UserLogin, Token)
 
 router = APIRouter(prefix="/api/auth", tags=["Authentication"])
 
-@router.post("/register")
+@router.post("/register", response_model=UserCreate, status_code=201)
 def register(
     user_data:UserCreate,
     db:Session = Depends(get_db)
@@ -52,7 +52,7 @@ def register(
     }
 
 
-@router.post("/login", response_model=Token)
+@router.post("/login", response_model=Token, status_code=201)
 def login(
     login_data: UserLogin,
     db: Session = Depends(get_db)
